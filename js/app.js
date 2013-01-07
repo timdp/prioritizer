@@ -30,7 +30,7 @@ var Prioritizer = function() {
 		createComponents();
 		stretchDraggables();
 		positionDraggables();
-        createDefaultAreas();
+		createDefaultAreas();
 	}
 
 	function createComponents() {
@@ -38,10 +38,10 @@ var Prioritizer = function() {
 		draggablesContainer = new Element("div", { id: "draggables" });
 		droppablesContainer = new Element("div", { id: "droppables" });
 		var instructions = new Element("div", {
-            id: "instructions",
+			id: "instructions",
 			text: "Drag the options in your preferred order."
 				+ " Your choice is automatically saved."
-        });
+		});
 		container.empty().adopt(
 			draggablesContainer, droppablesContainer,
 			instructions);
@@ -95,7 +95,7 @@ var Prioritizer = function() {
 		draggables.each(function(d) {
 			var size = d.getSize();
 			d.dataset.originalWidth = size.x;
-            d.dataset.originalHeight = size.y;
+			d.dataset.originalHeight = size.y;
 			d.dataset.originalTop = d.getPosition(container).y;
 			d.dataset.originalLeft = left;
 			d.setStyles({
@@ -108,21 +108,21 @@ var Prioritizer = function() {
 	}
 
 	function createDefaultAreas() {
-        draggables.each(function(d) {
-            draggablesContainer.grab(new Element("div", {
-                "class": "area",
-                styles: {
-                    position: "absolute",
-                    top:      0,
-                    left:     d.dataset.originalLeft   + "px",
-                    width:    d.dataset.originalWidth  + "px",
-                    height:   d.dataset.originalHeight + "px"
-                }
-            }));
-        });
-    }
+		draggables.each(function(d) {
+			draggablesContainer.grab(new Element("div", {
+				"class": "area",
+				styles: {
+					position: "absolute",
+					top:      0,
+					left:     d.dataset.originalLeft   + "px",
+					width:    d.dataset.originalWidth  + "px",
+					height:   d.dataset.originalHeight + "px"
+				}
+			}));
+		});
+	}
 
-    function makeInteractive() {
+	function makeInteractive() {
 		draggables.makeDraggable({
 			droppables: droppables,
 			onStart: function(draggable) {
