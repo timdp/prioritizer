@@ -6,7 +6,8 @@ var Prioritizer = function() {
 		minFontSize: 10,
 		maxFontSize: 100,
 		draggableSpacing: 10,
-		insert: true
+		insert: true,
+		dontSave: false
 	};
 
 	var options;
@@ -263,7 +264,7 @@ var Prioritizer = function() {
 			return false;
 		}
 		draggablesContainer.addClass("valid");
-		if (!dontSave) {
+		if (!dontSave && !config.dontSave) {
 			prepareRequest(function(rJson) {
 				if (!rJson || !rJson.success) {
 					alert("Error: invalid response.");
