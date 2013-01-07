@@ -306,6 +306,7 @@ var Prioritizer = function () {
     }
 
     return {
+        config: config,
         init: init,
         prepareRequest: prepareRequest
     };
