@@ -2,7 +2,6 @@ var Prioritizer = function () {
     "use strict";
 
     var config = {
-        backend: "./api.php",
         minFontSize: 10,
         maxFontSize: 100,
         draggableSpacing: 10,
@@ -10,6 +9,7 @@ var Prioritizer = function () {
         dontSave: false
     };
 
+    var backend;
     var options;
     var container;
     var draggablesContainer;
@@ -17,7 +17,8 @@ var Prioritizer = function () {
     var droppablesContainer;
     var droppables;
 
-    function init() {
+    function init(_backend) {
+        backend = _backend;
         prepareRequest(function (rJson) {
             if (rJson && rJson.options) {
                 start(rJson.options, rJson.order);
@@ -309,7 +310,7 @@ var Prioritizer = function () {
             };
         }
         return new Request.JSON({
-            url: config.backend,
+            url: backend,
             onRequest: function () {
                 $(document.body).addClass("busy");
             },
@@ -330,7 +331,3 @@ var Prioritizer = function () {
         init: init
     };
 }();
-
-window.addEvent("load", function () {
-    Prioritizer.init();
-});
