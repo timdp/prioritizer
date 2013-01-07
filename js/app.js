@@ -17,10 +17,21 @@ var Prioritizer = function () {
     var droppablesContainer;
     var droppables;
 
-    function init(_options, _order) {
+    function init() {
+        prepareRequest(function (rJson) {
+            if (rJson && rJson.options) {
+                start(rJson.options, rJson.order);
+            } else {
+                alert(Prioritizer.locale.error_start_failed);
+            }
+        }).get({
+            t: Date.now()
+        });
+    }
+
+    function start(_options, _order) {
         options = _options;
         buildUI();
-        makeInteractive();
         if (_order) {
             setOrder(_order, true);
         }
@@ -31,6 +42,7 @@ var Prioritizer = function () {
         stretchDraggables();
         positionDraggables();
         createDefaultAreas();
+        makeInteractive();
     }
 
     function createComponents() {
@@ -315,19 +327,10 @@ var Prioritizer = function () {
 
     return {
         config: config,
-        init: init,
-        prepareRequest: prepareRequest
+        init: init
     };
 }();
 
 window.addEvent("load", function () {
-    Prioritizer.prepareRequest(function (rJson) {
-        if (rJson && rJson.options) {
-            Prioritizer.init(rJson.options, rJson.order);
-        } else {
-            alert(Prioritizer.locale.error_start_failed);
-        }
-    }).get({
-        t: Date.now()
-    });
+    Prioritizer.init();
 });
