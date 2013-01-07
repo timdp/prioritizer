@@ -297,9 +297,9 @@ var Prioritizer = function () {
                 $(document.body).removeClass("busy");
                 onSuccess(rJson);
             },
-            onFailure: function () {
+            onFailure: function (xhr) {
                 $(document.body).removeClass("busy");
-                onFailure();
+                onFailure(xhr);
             },
             link: "cancel"
         });
