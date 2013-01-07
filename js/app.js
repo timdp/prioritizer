@@ -43,8 +43,7 @@ var Prioritizer = function () {
         });
         var instructions = new Element("div", {
             id: "instructions",
-            text: "Drag the options in your preferred order."
-                + " Your choice is automatically saved."
+            text: Prioritizer.locale.instructions
         });
         container.empty().adopt(
             draggablesContainer, droppablesContainer,
@@ -279,7 +278,7 @@ var Prioritizer = function () {
         if (!dontSave && !config.dontSave) {
             prepareRequest(function (rJson) {
                 if (!rJson || !rJson.success) {
-                    alert("Error: invalid response.");
+                    alert(Prioritizer.locale.error_invalid_response);
                 }
             }).post({
                 order: order.join(",")
@@ -294,7 +293,7 @@ var Prioritizer = function () {
         }
         if (!onFailure) {
             onFailure = function () {
-                alert("Error: request failed.");
+                alert(Prioritizer.locale.error_request_failed);
             };
         }
         return new Request.JSON({
@@ -326,7 +325,7 @@ window.addEvent("load", function () {
         if (rJson && rJson.options) {
             Prioritizer.init(rJson.options, rJson.order);
         } else {
-            alert("The application could not be started.");
+            alert(Prioritizer.locale.error_start_failed);
         }
     }).get({
         t: Date.now()
