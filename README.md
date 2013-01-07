@@ -23,7 +23,7 @@ backend. Proceed as follows:
       list of integers. If it was successfully stored, the JSON document
       should contain the key `success` with a true value.
 2. Make the REST backend available at a public URL.
-3. Edit `js/app.js` and change `api.json` to the URL of your REST backend,
+3. Edit `js/app.js` and change `api.php` to the URL of your REST backend,
    so the application knows where to look.
 
 Requirements

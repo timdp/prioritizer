@@ -2,7 +2,7 @@ var Prioritizer = function () {
     "use strict";
 
     var config = {
-        backend: "./api.json",
+        backend: "./api.php",
         minFontSize: 10,
         maxFontSize: 100,
         draggableSpacing: 10,
