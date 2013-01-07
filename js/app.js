@@ -1,7 +1,8 @@
 var Prioritizer = function () {
     "use strict";
 
-    var config = {
+    var defaultConfig = {
+        backend: null,
         minFontSize: 10,
         maxFontSize: 100,
         draggableSpacing: 10,
@@ -9,7 +10,7 @@ var Prioritizer = function () {
         dontSave: false
     };
 
-    var backend;
+    var config;
     var options;
     var container;
     var draggablesContainer;
@@ -17,8 +18,8 @@ var Prioritizer = function () {
     var droppablesContainer;
     var droppables;
 
-    function init(_backend) {
-        backend = _backend;
+    function init(_config) {
+        config = Object.merge(defaultConfig, _config);
         prepareRequest(function (rJson) {
             if (rJson && rJson.options) {
                 start(rJson.options, rJson.order);
@@ -310,7 +311,7 @@ var Prioritizer = function () {
             };
         }
         return new Request.JSON({
-            url: backend,
+            url: config.backend,
             onRequest: function () {
                 $(document.body).addClass("busy");
             },

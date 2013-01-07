@@ -11,7 +11,9 @@
 <script src="js/locale/en-US.js"></script>
 <script>
 window.addEvent("load", function () {
-    Prioritizer.init("api.php");
+    Prioritizer.init({
+    	backend: "api.php"
+    });
 });
 </script>
 <title>Prioritizer</title>
