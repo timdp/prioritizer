@@ -1,109 +1,109 @@
 html, body {
-	background: white;
-	color: #666;
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	font-family: 'Trebuchet MS', Verdana, Arial, Helvetica, sans-serif;
-	cursor: default;
-	-moz-user-select: none;
-	-webkit-user-select: none;
+    background: white;
+    color: #666;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Trebuchet MS', Verdana, Arial, Helvetica, sans-serif;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 #throbber {
-	display: none;
-	position: absolute;
-	top: 20px;
-	right: 20px;
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
 body.busy #throbber {
-	display: block;
+    display: block;
 }
 
 #container {
-	position: absolute;
-	left: 50%;
-	top: 50px;
-	margin-left: -300px;
-	width: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    margin-left: -300px;
+    width: 600px;
 }
 
 #droppables {
-	margin: 30px 0;
+    margin: 30px 0;
 }
 
 #draggables div {
-	-webkit-transition-property: background-color;
-	-webkit-transition-duration: 0.2s;
-	-gecko-transition-property: background-color;
-	-gecko-transition-duration: 0.2s;
-	-o-transition-property: background-color;
-	-o-transition-duration: 0.2s;
+    -webkit-transition-property: background-color;
+    -webkit-transition-duration: 0.2s;
+    -gecko-transition-property: background-color;
+    -gecko-transition-duration: 0.2s;
+    -o-transition-property: background-color;
+    -o-transition-duration: 0.2s;
 }
 
 #draggables div, #droppables div {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 #draggables div.draggable {
-	background: #90C;
-	color: white;
-	float: left;
-	z-index: 10;
+    background: #90C;
+    color: white;
+    float: left;
+    z-index: 10;
 }
 
 #draggables div.area {
-	background: #F0F0F0;
-	z-index: 0;
+    background: #F0F0F0;
+    z-index: 0;
 }
 
 #draggables div span {
-	display: block;
-	margin: 20px;
-	text-align: center;
+    display: block;
+    margin: 20px;
+    text-align: center;
 }
 
 #draggables div.dragging {
-	background: #C0F;
-	z-index: 100 !important;
+    background: #C0F;
+    z-index: 100 !important;
 }
 
 #draggables div.dropped {
-	background: #C09;
+    background: #C09;
 }
 
 #draggables div.droppable {
-	background: #F0C;
+    background: #F0C;
 }
 
 #draggables div.replaceable {
-	background: #90C;
+    background: #90C;
 }
 
 #draggables.valid div.draggable {
-	background: #6C6;
+    background: #6C6;
 }
 
 #droppables div {
-	color: #CCC;
-	border: 3px dashed #CCC;
-	margin: 20px 0;
+    color: #CCC;
+    border: 3px dashed #CCC;
+    margin: 20px 0;
 }
 
 #droppables div span {
-	display: block;
-	margin: 16px;
-	text-align: center;
+    display: block;
+    margin: 16px;
+    text-align: center;
 }
 
 #droppables div.active {
-	background: #FF9;
+    background: #FF9;
 }
 
 #instructions {
-	font-size: normal;
-	line-height: 150%;
-	text-align: justify;
-	margin-bottom: 50px;
+    font-size: normal;
+    line-height: 150%;
+    text-align: justify;
+    margin-bottom: 50px;
 }
