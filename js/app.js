@@ -47,32 +47,25 @@ var Prioritizer = function () {
                 + " Your choice is automatically saved."
         });
         container.empty().adopt(
-        draggablesContainer, droppablesContainer,
-        instructions);
+            draggablesContainer, droppablesContainer,
+            instructions);
         options.each(function (o, idx) {
-            var draggable = new Element("div", {
-                id: "draggable" + (idx + 1),
-                "class": "draggable"
-            });
-            if (!("dataset" in draggable)) draggable.dataset = {};
-            draggable.dataset.number = idx + 1;
-            draggable.grab(new Element("span", {
-                text: o
-            }));
-            draggablesContainer.grab(draggable);
-            var droppable = new Element("div", {
-                id: "droppable" + (idx + 1),
-                "class": "droppable"
-            });
-            if (!("dataset" in droppable)) droppable.dataset = {};
-            droppable.dataset.number = idx + 1;
-            droppable.grab(new Element("span", {
-                text: idx + 1
-            }));
-            droppablesContainer.grab(droppable);
+            makeBlock("draggable", idx + 1, o, draggablesContainer);
+            makeBlock("droppable", idx + 1, idx + 1, droppablesContainer);
         });
         draggables = draggablesContainer.getChildren("div");
         droppables = droppablesContainer.getChildren("div");
+    }
+
+    function makeBlock(type, number, text, container) {
+        var block = new Element("div", {
+            id:      type + number,
+            "class": type
+        });
+        if (!("dataset" in block)) block.dataset = {};
+        block.dataset.number = number;
+        block.grab(new Element("span", { text: text }));
+        container.grab(block);
     }
 
     function stretchDraggables() {
