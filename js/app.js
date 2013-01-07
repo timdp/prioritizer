@@ -155,52 +155,56 @@ var Prioritizer = function () {
             },
             onDrop: function (draggable, droppable) {
                 draggable.removeClass("droppable");
-                draggable.removeClass("dragging");
+                var onComplete = function () {
+                    draggable.removeClass("dragging");
+                };
                 if (droppable) {
                     if ("contents" in droppable.dataset) {
                         var other = $(droppable.dataset.contents);
                         other.removeClass("replaceable");
-                        insertOrReplace(draggable, droppable);
+                        insertOrReplace(draggable, droppable, onComplete);
                     } else {
-                        attach(draggable, droppable);
+                        attach(draggable, droppable, onComplete);
                     }
                     checkValidity();
                 } else {
-                    restore(draggable);
+                    restore(draggable, onComplete);
                 }
             }
         });
     }
 
-    function insertOrReplace(draggable, droppable) {
+    function insertOrReplace(draggable, droppable, onComplete) {
         if (config.insert) {
-            insert(draggable, droppable, false)
-                || insert(draggable, droppable, true);
+            insert(draggable, droppable, false, onComplete)
+                || insert(draggable, droppable, true, onComplete);
         } else {
             detach(other);
-            restore(other);
+            restore(other, onComplete);
         }
     }
 
-    function insert(draggable, droppable, backwards) {
+    function insert(draggable, droppable, backwards, onComplete) {
         var free = findFree(droppable, backwards);
         if (!free) {
             return false;
         }
         var iterate = backwards
-            ? Element.prototype.getNext : Element.prototype.getPrevious;
+            ? Element.prototype.getNext
+            : Element.prototype.getPrevious;
         while (free != droppable) {
             var sib = iterate.call(free);
             attach($(sib.dataset.contents), free);
             free = sib;
         }
-        attach(draggable, free);
+        attach(draggable, free, onComplete);
         return true;
     }
 
     function findFree(droppable, backwards) {
         var iterate = backwards
-            ? Element.prototype.getPrevious : Element.prototype.getNext;
+            ? Element.prototype.getPrevious
+            : Element.prototype.getNext;
         var sib = iterate.call(droppable);
         while (sib && "contents" in sib.dataset) {
             sib = iterate.call(sib);
@@ -212,7 +216,8 @@ var Prioritizer = function () {
         var order = [];
         draggables.each(function (d) {
             var val = ("container" in d.dataset)
-                ? $(d.dataset.container).dataset.number : null;
+                ? $(d.dataset.container).dataset.number
+                : null;
             order.push(val);
         });
         return order;
@@ -230,12 +235,14 @@ var Prioritizer = function () {
         checkValidity(dontSave);
     }
 
-    function attach(draggable, droppable) {
+    function attach(draggable, droppable, onComplete) {
         draggable.addClass("dropped");
-        draggable.morph({
+        new Fx.Morph(draggable, {
+            onComplete: onComplete
+        }).start({
             width: droppable.getSize().x,
-            top: droppable.getPosition(container).y,
-            left: 0
+            top:   droppable.getPosition(container).y,
+            left:  0
         });
         droppable.dataset.contents = draggable.id;
         draggable.dataset.container = droppable.id;
@@ -249,11 +256,13 @@ var Prioritizer = function () {
         }
     }
 
-    function restore(draggable) {
-        draggable.morph({
+    function restore(draggable, onComplete) {
+        new Fx.Morph(draggable, {
+            onComplete: onComplete
+        }).start({
             width: draggable.dataset.originalWidth,
-            top: draggable.dataset.originalTop,
-            left: draggable.dataset.originalLeft
+            top:   draggable.dataset.originalTop,
+            left:  draggable.dataset.originalLeft
         });
     }
 
