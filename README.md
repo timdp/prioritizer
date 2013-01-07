@@ -6,9 +6,8 @@ A simple Web application to order a set of strings to your liking.
 Usage
 -----
 
-For a demonstration, just upload all files to a public URL and browse to
-`index.html`. Your choice won't be saved, but you'll be able to try out the
-frontend application.
+Take a look at [this demo](http://timdp.github.com/prioritizer/). Your choice
+won't be saved, but you'll be able to try out the frontend application.
 
 To enable saving, you need to combine this code with your own (simple) REST
 backend. Proceed as follows:
