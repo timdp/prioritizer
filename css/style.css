@@ -49,7 +49,6 @@ body.busy #throbber {
 #draggables div.draggable {
     background: #90C;
     color: white;
-    float: left;
     z-index: 10;
 }
 

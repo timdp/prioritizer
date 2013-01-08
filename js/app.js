@@ -96,7 +96,10 @@ var Prioritizer = function () {
         var totalSpacing = config.draggableSpacing * (draggables.length - 1);
         var maxWidth = draggablesContainer.getSize().x;
         var fontSize = config.maxFontSize;
-        draggables.setStyle("font-size", fontSize + "px");
+        draggables.setStyles({
+            "float":     "left",
+            "font-size": fontSize + "px"
+        });
         var width = totalSpacing;
         draggables.each(function (d) {
             width += d.getSize().x;
@@ -110,7 +113,7 @@ var Prioritizer = function () {
             });
         }
         draggablesContainer.setStyle("height",
-        draggables[0].getSize().y + "px");
+            draggables[0].getSize().y + "px");
         droppablesContainer.setStyle("font-size", fontSize + "px");
     }
 
@@ -129,9 +132,9 @@ var Prioritizer = function () {
             d.dataset.originalTop = d.getPosition(container).y;
             d.dataset.originalLeft = left;
             d.setStyles({
-                "float": "none",
+                "float":  "none",
                 position: "absolute",
-                left: left + "px"
+                left:     left + "px"
             });
             left += size.x + actualSpacing;
         });
@@ -143,10 +146,10 @@ var Prioritizer = function () {
                 "class": "area",
                 styles: {
                     position: "absolute",
-                    top: 0,
-                    left: d.dataset.originalLeft + "px",
-                    width: d.dataset.originalWidth + "px",
-                    height: d.dataset.originalHeight + "px"
+                    top:      0,
+                    left:     d.dataset.originalLeft + "px",
+                    width:    d.dataset.originalWidth + "px",
+                    height:   d.dataset.originalHeight + "px"
                 }
             }));
         });
