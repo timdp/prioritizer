@@ -181,9 +181,11 @@ var Prioritizer = function () {
             },
             onDrop: function (draggable, droppable) {
                 draggable.removeClass("droppable");
-                droppable.removeClass("active");
                 var onComplete = function () {
                     draggable.removeClass("dragging");
+                    if (droppable) {
+                        droppable.removeClass("active");
+                    }
                 };
                 if (droppable) {
                     if ("contents" in droppable.dataset) {
