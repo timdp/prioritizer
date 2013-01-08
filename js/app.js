@@ -33,9 +33,20 @@ var Prioritizer = function () {
 
     function start(_options, _order) {
         options = _options;
+        captureTouchEvents();
         buildUI();
         if (_order) {
             setOrder(_order, true);
+        }
+    }
+
+    function captureTouchEvents() {
+        // On touch-enabled devices, override mouse events with touch events.
+        // A better solution would be to capture both in Drag.Move itself.
+        if ("ontouchstart" in window) {
+            Element.defineCustomEvent("mousedown", { base: "touchstart" });
+            Element.defineCustomEvent("mouseup",   { base: "touchend" });
+            Element.defineCustomEvent("mousemove", { base: "touchmove" });
         }
     }
 

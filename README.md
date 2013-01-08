@@ -26,12 +26,20 @@ backend. Proceed as follows:
 3. Edit `index.html` and change `api.php` to the URL of your REST backend,
    so the application knows where to look.
 
-Requirements
-------------
+Includes
+--------
 
-- MooTools Core
-- MooTools More with Drag.Move
-- Any modern web browser, or even Internet Explorer 8
+- [MooTools](http://mootools.net/) Core 1.4.5
+  via
+  [Google Hosted Libraries](https://developers.google.com/speed/libraries/devguide)
+- More/Drag.Move 1.4.0.1
+- [Custom Event](https://github.com/cpojer/mootools-custom-event) trunk
+
+Compatibility
+-------------
+
+Any modern web browser, or even IE8, should do. Touch input is also supported,
+although it currently breaks mouse input.
 
 Limitations
 -----------
