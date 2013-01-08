@@ -1,6 +1,4 @@
 var Prioritizer = function () {
-    "use strict";
-
     var defaultConfig = {
         backend: null,
         minFontSize: 10,
