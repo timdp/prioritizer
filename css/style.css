@@ -57,10 +57,13 @@ body.busy #throbber {
     z-index: 0;
 }
 
-#draggables div span {
+#draggables div.draggable {
+    text-align: center;
+}
+
+#draggables div.draggable span {
     display: block;
     margin: 20px;
-    text-align: center;
 }
 
 #draggables div.dragging {
@@ -84,16 +87,12 @@ body.busy #throbber {
     background: #6C6;
 }
 
-#droppables div {
+#droppables div.droppable {
+    margin: 20px 0;
+    padding: 17px;
+    text-align: center;
     color: #CCC;
     border: 3px dashed #CCC;
-    margin: 20px 0;
-}
-
-#droppables div span {
-    display: block;
-    margin: 14px;
-    text-align: center;
 }
 
 #droppables div.active {

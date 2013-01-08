@@ -94,23 +94,26 @@ var Prioritizer = function () {
         var totalSpacing = config.draggableSpacing * (draggables.length - 1);
         var maxWidth = draggablesContainer.getSize().x;
         var fontSize = config.maxFontSize;
-        draggables.setStyles({
+        draggablesContainer.setStyles({
             display:     "none",
-            "float":     "left",
             "font-size": fontSize + "px"
         });
+        draggables.setStyle("float", "left");
         var width = totalSpacing;
         draggables.measure(function () { width += this.getSize().x; });
         while (fontSize > config.minFontSize && width > maxWidth) {
             --fontSize;
-            draggables.setStyle("font-size", fontSize + "px");
+            draggablesContainer.setStyle("font-size", fontSize + "px");
             width = totalSpacing;
             draggables.measure(function () { width += this.getSize().x; });
         }
-        draggables.setStyle("display", "block");
-        var height = draggables[0].getSize().y;
-        draggablesContainer.setStyle("height", height + "px");
-        droppablesContainer.setStyle("font-size", fontSize + "px");
+        var height;
+        draggables[0].measure(function () { height = this.getSize().y; });
+        draggablesContainer.setStyles({
+            display: "block",
+            height:  height + "px"
+        });
+        droppables.setStyle("font-size", fontSize + "px");
     }
 
     function positionDraggables() {
@@ -178,6 +181,7 @@ var Prioritizer = function () {
             },
             onDrop: function (draggable, droppable) {
                 draggable.removeClass("droppable");
+                droppable.removeClass("active");
                 var onComplete = function () {
                     draggable.removeClass("dragging");
                 };
