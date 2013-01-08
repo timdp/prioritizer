@@ -102,12 +102,12 @@ var Prioritizer = function () {
             "font-size": fontSize + "px"
         });
         var width = totalSpacing;
-        draggables.measure(function() { width += this.getSize().x; });
+        draggables.measure(function () { width += this.getSize().x; });
         while (fontSize > config.minFontSize && width > maxWidth) {
             --fontSize;
             draggables.setStyle("font-size", fontSize + "px");
             width = totalSpacing;
-            draggables.measure(function() { width += this.getSize().x; });
+            draggables.measure(function () { width += this.getSize().x; });
         }
         draggables.setStyle("display", "block");
         var height = draggables[0].getSize().y;
