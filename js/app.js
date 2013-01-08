@@ -97,23 +97,21 @@ var Prioritizer = function () {
         var maxWidth = draggablesContainer.getSize().x;
         var fontSize = config.maxFontSize;
         draggables.setStyles({
+            display:     "none",
             "float":     "left",
             "font-size": fontSize + "px"
         });
         var width = totalSpacing;
-        draggables.each(function (d) {
-            width += d.getSize().x;
-        });
+        draggables.measure(function() { width += this.getSize().x; });
         while (fontSize > config.minFontSize && width > maxWidth) {
             --fontSize;
             draggables.setStyle("font-size", fontSize + "px");
             width = totalSpacing;
-            draggables.each(function (d) {
-                width += d.getSize().x;
-            });
+            draggables.measure(function() { width += this.getSize().x; });
         }
-        draggablesContainer.setStyle("height",
-            draggables[0].getSize().y + "px");
+        draggables.setStyle("display", "block");
+        var height = draggables[0].getSize().y;
+        draggablesContainer.setStyle("height", height + "px");
         droppablesContainer.setStyle("font-size", fontSize + "px");
     }
 

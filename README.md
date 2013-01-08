@@ -32,7 +32,7 @@ Includes
 - [MooTools](http://mootools.net/) Core 1.4.5
   via
   [Google Hosted Libraries](https://developers.google.com/speed/libraries/devguide)
-- More/Drag.Move 1.4.0.1
+- MooTools More 1.4.0.1: Drag.Move and Element.Measure
 - [Custom Event](https://github.com/cpojer/mootools-custom-event) trunk
 
 Compatibility
