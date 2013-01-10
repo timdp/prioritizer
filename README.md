@@ -10,7 +10,8 @@ Take a look at [this demo](http://timdp.github.com/prioritizer/). Your choice
 won't be saved, but you'll be able to try out the frontend application.
 
 To enable saving, you need to combine this code with your own (simple) REST
-backend. Proceed as follows:
+backend. A sample implementation in PHP is included as `api.php`. To write
+your own, either extend that one or proceed as follows:
 
 1. Write a REST backend in PHP, Python, Ruby, Node.js, or whatever.
     - On `GET`, it should return a JSON document consisting of:
