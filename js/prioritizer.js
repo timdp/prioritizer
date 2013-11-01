@@ -34,7 +34,9 @@ var Prioritizer = function () {
         captureTouchEvents();
         buildUI();
         if (_order) {
-            setOrder(_order, true);
+            setTimeout(function() {
+                setOrder(_order, true);
+            }, 100);
         }
     }
 
