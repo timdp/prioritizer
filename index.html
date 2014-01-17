@@ -12,6 +12,13 @@
 <script src="js/prioritizer.js"></script>
 <script src="js/prioritizer/locale/en-US.js"></script>
 <script>
+if (navigator.userAgent.match(/\bIEMobile\/10\b/)) {
+    window.addEvent("domready", function() {
+        var s = document.createElement("style");
+        s.appendChild(document.createTextNode("@-ms-viewport{width:700px}"));
+        document.getElementsByTagName("head")[0].appendChild(s);
+    });
+}
 window.addEvent("load", function () {
     Prioritizer.init({
         backend: "api.php"
