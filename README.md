@@ -33,14 +33,14 @@ Includes
 - [MooTools](http://mootools.net/) Core 1.4.5
   via
   [Google Hosted Libraries](https://developers.google.com/speed/libraries/devguide)
-- MooTools More 1.4.0.1: Drag.Move and Element.Measure
-- [Custom Event](https://github.com/cpojer/mootools-custom-event) trunk
+- MooTools More 1.4.0.1: Drag.Move, Element.Measure, and Class.Refactor
+- [This patch](http://stackoverflow.com/questions/7588576/drag-with-mootools-on-mobile)
+  to enable touch support
 
 Compatibility
 -------------
 
-Any modern web browser, or even IE8, should do. Touch input is also supported,
-although it currently breaks mouse input.
+Any modern web browser, or even IE8, should do.
 
 Limitations
 -----------
