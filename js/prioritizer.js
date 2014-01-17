@@ -33,9 +33,7 @@ var Prioritizer = function () {
         options = _options;
         buildUI();
         if (_order) {
-            setTimeout(function() {
-                setOrder(_order, true);
-            }, 100);
+            setOrder(_order, true);
         }
     }
 
@@ -256,6 +254,7 @@ var Prioritizer = function () {
     }
 
     function attach(draggable, droppable, onComplete) {
+        draggable.setStyle("width", draggable.getSize().x + "px");
         draggable.addClass("dropped");
         new Fx.Morph(draggable, {
             onComplete: onComplete
