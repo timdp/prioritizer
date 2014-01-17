@@ -100,7 +100,7 @@ body.busy #throbber {
 }
 
 #instructions {
-    font-size: normal;
+    font-size: 100%;
     line-height: 150%;
     text-align: justify;
     margin-bottom: 50px;
